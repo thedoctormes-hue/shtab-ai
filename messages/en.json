@@ -1,0 +1,221 @@
+{
+  "Header": {
+    "nav": {
+      "projects": "Projects",
+      "stakeholders": "Team",
+      "architecture": "Architecture",
+      "cases": "Cases",
+      "tech": "Stack",
+      "contacts": "Contacts"
+    },
+    "cta": "Contact Us"
+  },
+  "Hero": {
+    "title": "AI Laboratory",
+    "titleAccent": "that works 24/7",
+    "subtitle": "Autonomous AI agents solve real-world problems — medicine, infrastructure, services. No breaks, no vacations.",
+    "stats": {
+      "agents": "Agents",
+      "projects": "Projects",
+      "tests": "Tests"
+    },
+    "cta": {
+      "primary": "Start a Project",
+      "secondary": "View Projects"
+    }
+  },
+  "Projects": {
+    "title": "Projects",
+    "subtitle": "23 projects in 4 directions",
+    "categories": {
+      "all": "All",
+      "medicine": "Medicine",
+      "infrastructure": "Infrastructure",
+      "ai-services": "AI Services",
+      "tools": "Tools"
+    },
+    "items": {
+      "polyscop": "System monitoring and analytics",
+      "myrmex-control": "Infrastructure management",
+      "snablab": "ML platform for model training",
+      "free-api-hunter": "Free API search and aggregation",
+      "consilium": "Decision support system",
+      "api-hub": "API management hub",
+      "autoexpert": "Automation expert system",
+      "stenographer": "Audio transcription and analysis",
+      "zprr-tracker": "Task and process tracker",
+      "hype-pilot": "AI content pilot",
+      "lab-monitoring": "Laboratory monitoring",
+      "mail-daemon": "Email automation",
+      "lab-vault": "Secrets and config vault",
+      "DoctorMandDesign": "DoctorM Design System",
+      "artifact-pulse": "Artifact monitoring",
+      "lab-playwright-expert": "E2E testing",
+      "mcp-tools": "MCP tools",
+      "vpn-daemon": "VPN service",
+      "SNZK": "Notes and knowledge system",
+      "remote-access": "Remote access",
+      "cheque-bot": "Receipt and recipe bot",
+      "msk-gastro-digest-bot": "Gastro bot: diets and recipes"
+    }
+  },
+  "Stakeholders": {
+    "title": "Team",
+    "subtitle": "HeadLab and 8 specialized AI agents",
+    "lead": {
+      "name": "HeadLab (ЗавЛаб)",
+      "role": "Architect & Coordinator",
+      "desc": "Manages the laboratory, designs architecture, coordinates agents"
+    },
+    "agents": {
+      "kotolizator": {
+        "name": "Kotolizator",
+        "role": "Coordination",
+        "desc": "Strategic planning, task distribution, quality control"
+      },
+      "myrmex": {
+        "name": "Myrmex",
+        "role": "Development",
+        "desc": "Fullstack development, Python/TypeScript, APIs, databases"
+      },
+      "bestia": {
+        "name": "Bestia",
+        "role": "Infrastructure",
+        "desc": "DevOps, Docker, CI/CD, monitoring, servers"
+      },
+      "streikbrecher": {
+        "name": "Streikbrecher",
+        "role": "Fullstack",
+        "desc": "Universal development from landing pages to complex systems"
+      },
+      "sova": {
+        "name": "Sova",
+        "role": "Code Audit",
+        "desc": "Code review, quality standards, security"
+      },
+      "voron": {
+        "name": "Voron",
+        "role": "Reconnaissance",
+        "desc": "Research, data collection, competitor analysis"
+      },
+      "dominica": {
+        "name": "Dominica",
+        "role": "Resource Scout",
+        "desc": "Finding tools, libraries, APIs for projects"
+      },
+      "mangust": {
+        "name": "Mangust",
+        "role": "Analytics",
+        "desc": "Data analysis, metrics, reporting, visualization"
+      }
+    }
+  },
+  "Architecture": {
+    "title": "Architecture",
+    "subtitle": "Ecosystem of 8 autonomous agents",
+    "layers": {
+      "presentation": {
+        "name": "Presentation Layer",
+        "desc": "Next.js, API endpoints, WebSocket"
+      },
+      "orchestration": {
+        "name": "Orchestration Layer",
+        "desc": "Kotolizator coordinates tasks between agents"
+      },
+      "services": {
+        "name": "Services Layer",
+        "desc": "Myrmex (dev), Bestia (infra), Streikbrecher (fullstack)"
+      },
+      "intelligence": {
+        "name": "Intelligence Layer",
+        "desc": "Sova (audit), Voron (recon), Dominica (resources), Mangust (analytics)"
+      },
+      "infrastructure": {
+        "name": "Infrastructure Layer",
+        "desc": "PostgreSQL, Redis, Docker, systemd, VPN"
+      }
+    },
+    "principles": {
+      "title": "Principles",
+      "items": {
+        "0": "Each agent specializes in its own domain",
+        "1": "Agents communicate via a shared message broker",
+        "2": "State stored in PostgreSQL + Redis CI",
+        "3": "All services are containerized (Docker)",
+        "4": "Unified monitoring and logging system"
+      }
+    }
+  },
+  "Cases": {
+    "title": "Cases",
+    "subtitle": "Real results from the laboratory",
+    "items": {
+      "shtab": {
+        "title": "SHTAB Platform",
+        "problem": "Need a unified platform for AI agent management with real-time monitoring",
+        "solution": "Microservice architecture on Next.js + FastAPI + PostgreSQL, 8 agents, independent containers",
+        "result": "23 projects in production, 99.9% uptime, auto-scaling"
+      },
+      "medical": {
+        "title": "Medical AI Suite",
+        "problem": "Doctors needed fast medical data analysis and standards-compliant report generation",
+        "solution": "AI agents for parsing tests, generating differential diagnoses, and auto-documentation",
+        "result": "Report preparation time reduced from 2 hours to 15 minutes, 97.3% accuracy"
+      },
+      "infra": {
+        "title": "Infrastructure Automation",
+        "problem": "Manual management of 15+ servers, frequent downtime, no unified monitoring",
+        "solution": "Bestia + Mangust: auto-deploy, alerts, self-healing services",
+        "result": "90% of incidents resolved automatically, response time < 5 minutes"
+      }
+    }
+  },
+  "TechStack": {
+    "title": "Tech Stack",
+    "subtitle": "Proven solutions for reliable operation",
+    "categories": {
+      "languages": {
+        "name": "Languages",
+        "items": ["Python", "TypeScript", "Go", "Bash"]
+      },
+      "frameworks": {
+        "name": "Frameworks",
+        "items": ["FastAPI", "React", "Next.js", "Express"]
+      },
+      "databases": {
+        "name": "Databases",
+        "items": ["PostgreSQL", "Redis"]
+      },
+      "infrastructure": {
+        "name": "Infrastructure",
+        "items": ["Docker", "systemd", "Nginx"]
+      }
+    }
+  },
+  "Contacts": {
+    "title": "Contact Us",
+    "subtitle": "Ready to discuss your project?",
+    "items": {
+      "telegram": "Telegram",
+      "email": "Email",
+      "site": "Website"
+    },
+    "cta": {
+      "title": "Start Collaboration",
+      "desc": "Tell us about your project — our agents will find the optimal solution",
+      "button": "Write on Telegram"
+    }
+  },
+  "Footer": {
+    "rights": "All rights reserved",
+    "built": "Built by AI agents of DoctorM&Ai Laboratory",
+    "version": "v1.0.0"
+  },
+  "Theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "Language": {
+    "label": "Language"
+  }
+}

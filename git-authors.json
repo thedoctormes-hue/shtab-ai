@@ -1,0 +1,13 @@
+{
+  "kotolizator": { "name": "Котолизатор", "email": "kotolizator@labdoctorm.ru" },
+  "myrmex": { "name": "Муравей", "email": "myrmex@labdoctorm.ru" },
+  "bestia": { "name": "Бестия", "email": "bestia@labdoctorm.ru" },
+  "streikbrecher": { "name": "Штрейкбрехер", "email": "streikbrecher@labdoctorm.ru" },
+  "sova": { "name": "Сова", "email": "sova@labdoctorm.ru" },
+  "voron": { "name": "Ворон", "email": "voron@labdoctorm.ru" },
+  "dominika": { "name": "Доминика", "email": "dominika@labdoctorm.ru" },
+  "mangust": { "name": "Мангуст", "email": "mangust@labdoctorm.ru" },
+  "antcat": { "name": "Муравей", "email": "antcat@labdoctorm.ru" },
+  "raven": { "name": "Ворон", "email": "raven@labdoctorm.ru" },
+  "owl": { "name": "Сова", "email": "owl@labdoctorm.ru" }
+}
