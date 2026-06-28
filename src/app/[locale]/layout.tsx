@@ -1,9 +1,14 @@
 import type { ReactNode } from "react";
-import { ThemeProvider } from "../../components/ThemeProvider";
-import { Navbar } from "../../components/Navbar";
-import { Footer } from "../../components/Footer";
-import { LocaleProvider } from "../../components/LocaleProvider";
+import { Inter } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, setRequestLocale } from "next-intl/server";
+import { ThemeProvider } from "next-themes";
+import { Header } from "../../components/layout/Header";
+import { Footer } from "../../components/layout/Footer";
+import { CustomCursor } from "../../components/ui/CustomCursor";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export function generateStaticParams() {
   return [{ locale: "ru" }, { locale: "en" }];
@@ -66,34 +71,31 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
+  const messages = await getMessages();
   const base = "https://shtab-ai.ru";
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" hrefLang="ru-RU" href={`${base}/ru`} />
         <link rel="alternate" hrefLang="en-US" href={`${base}/en`} />
         <link rel="alternate" hrefLang="x-default" href={`${base}/ru`} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
         <meta name="theme-color" content="#040A14" />
       </head>
-      <body className="min-h-screen bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
+      <body className="min-h-screen bg-[#040A14] text-[#E6F1FF] antialiased">
         <a href="#main-content" className="skip-link">
           {locale === "en" ? "Skip to content" : "Перейти к содержимому"}
         </a>
-        <LocaleProvider locale={locale as "ru" | "en"}>
-          <ThemeProvider>
-            <Navbar />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <NextIntlClientProvider messages={messages}>
+            <CustomCursor />
+            <Header />
             <main id="main-content">{children}</main>
             <Footer />
-          </ThemeProvider>
-        </LocaleProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

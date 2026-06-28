@@ -1,10 +1,10 @@
-import { Hero } from "../../components/Hero";
-import { Projects } from "../../components/Projects";
-import { Stakeholders } from "../../components/Stakeholders";
-import { Architecture } from "../../components/Architecture";
-import { Cases } from "../../components/Cases";
-import { TechStack } from "../../components/TechStack";
-import { Contacts } from "../../components/Contacts";
+import { Hero } from "../../components/sections/Hero";
+import { Projects } from "../../components/sections/Projects";
+import { Stakeholders } from "../../components/sections/Stakeholders";
+import { Architecture } from "../../components/sections/Architecture";
+import { Cases } from "../../components/sections/Cases";
+import { TechStack } from "../../components/sections/TechStack";
+import { Contacts } from "../../components/sections/Contacts";
 
 export default function Home() {
   return (
