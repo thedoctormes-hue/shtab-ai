@@ -20,7 +20,7 @@ const caseStudies: CaseStudy[] = [
     description: 'Система управления закупками лабораторных расходных материалов',
     challenge: 'Ручное отслеживание закупок расходников приводило к срывам сроков и перерасходу бюджета',
     solution: 'Автоматизированная система учёта с предиктивной аналитикой потребностей',
-    results: '651 тест, production-развёртывание на snablab.shtab-ai.ru',
+    results: '651 тест, production-развёртывание в закрытом контуре',
     emoji: '🧪',
   },
   {
@@ -80,63 +80,44 @@ export function Cases() {
           <p className="text-lg text-gray300 max-w-2xl mx-auto">{t('subtitle')}</p>
         </motion.div>
 
-        {/* Case Studies */}
+        {/* Case Studies Grid */}
         <motion.div
-          className="space-y-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {caseStudies.map((caseStudy, index) => (
+          {caseStudies.map((cs) => (
             <motion.div
-              key={caseStudy.id}
-              className="glassmorphism p-8 rounded-xl hover:border-accentCyan transition-all group"
+              key={cs.id}
+              className="group bg-dark-surface border border-dark-border rounded-2xl p-6 md:p-8 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan"
               variants={itemVariants}
-              whileHover={{
-                boxShadow: '0 0 30px rgba(0, 229, 255, 0.2)',
-              }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Left side - Info */}
+              <span className="text-3xl">{cs.emoji}</span>
+              <h3 className="mt-4 text-2xl font-bold text-white">{cs.title}</h3>
+              <p className="mt-1 text-sm text-light-grey">{cs.description}</p>
+
+              <div className="border-t border-dark-border my-5" />
+
+              <div className="space-y-4">
                 <div>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="text-5xl">{caseStudy.emoji}</div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-primaryText group-hover:text-accentCyan transition-colors">
-                        {caseStudy.title}
-                      </h3>
-                      <p className="text-accentCyan text-sm font-semibold">{caseStudy.description}</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4 mt-6">
-                    <div>
-                      <h4 className="text-sm font-bold text-gray300 mb-2">Challenge</h4>
-                      <p className="text-primaryText">{caseStudy.challenge}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-gray300 mb-2">Solution</h4>
-                      <p className="text-primaryText">{caseStudy.solution}</p>
-                    </div>
-                  </div>
+                  <span className="font-mono text-[0.7rem] font-medium uppercase text-neon-purple">Challenge</span>
+                  <p className="text-sm text-light-grey mt-1 leading-relaxed">{cs.challenge}</p>
                 </div>
-
-                {/* Right side - Results */}
-                <div className="flex flex-col justify-center">
-                  <div className="glassmorphism p-6 rounded-lg border-2 border-accentCyan/50">
-                    <h4 className="text-sm font-bold text-accentCyan mb-4">Results</h4>
-                    <p className="text-2xl font-bold text-primaryText mb-4">{caseStudy.results}</p>
-                    <motion.button
-                      className="px-6 py-2 bg-accentCyan text-background font-bold rounded-lg hover:shadow-lg transition-all"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Learn More →
-                    </motion.button>
-                  </div>
+                <div>
+                  <span className="font-mono text-[0.7rem] font-medium uppercase text-neon-cyan">Solution</span>
+                  <p className="text-sm text-light-grey mt-1 leading-relaxed">{cs.solution}</p>
+                </div>
+                <div>
+                  <span className="font-mono text-[0.7rem] font-medium uppercase text-electric-teal">Results</span>
+                  <p className="text-sm text-light-grey mt-1 leading-relaxed">{cs.results}</p>
                 </div>
               </div>
+
+              <p className="mt-6 text-sm font-semibold text-neon-cyan group-hover:underline">
+                Подробнее →
+              </p>
             </motion.div>
           ))}
         </motion.div>

@@ -1,99 +1,87 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { Github, Twitter, Linkedin, Send } from 'lucide-react';
 import Link from 'next/link';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-gray200 bg-background/50 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+    <footer className="bg-deep-black border-t border-dark-border">
+      <div className="max-w-[1200px] mx-auto px-[clamp(1rem,4vw,3rem)] py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accentCyan to-purple-600 flex items-center justify-center text-white font-bold">
-                M
-              </div>
-              <span className="font-bold text-primaryText">DoctorM&Ai</span>
+            <div className="font-display text-xl font-bold text-white flex items-center">
+              <span className="text-neon-cyan font-mono">M</span>
+              <span>DoctorM&amp;Ai</span>
             </div>
-            <p className="text-gray300 text-sm">
-              AI laboratory that works 24/7, building intelligent solutions for healthcare, business, and government.
+            <p className="mt-4 text-sm text-mid-grey leading-relaxed">
+              AI-лаборатория, которая работает 24/7, создавая интеллектуальные решения для здравоохранения, бизнеса и государства.
             </p>
           </div>
 
           {/* Product */}
           <div>
-            <h4 className="font-bold text-primaryText mb-4">Product</h4>
-            <ul className="space-y-2 text-sm text-gray300">
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Features</Link></li>
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Pricing</Link></li>
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Documentation</Link></li>
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">API</Link></li>
+            <h4 className="text-sm font-semibold text-white uppercase mb-4">Продукты</h4>
+            <ul className="space-y-3">
+              {['СнабЛаб', 'autoexpert', 'cheque-bot', 'mail-daemon'].map((item) => (
+                <li key={item}>
+                  <Link href="#projects" className="text-sm text-mid-grey hover:text-neon-cyan transition-colors duration-200">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="font-bold text-primaryText mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-gray300">
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">About</Link></li>
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Blog</Link></li>
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Careers</Link></li>
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Contact</Link></li>
+            <h4 className="text-sm font-semibold text-white uppercase mb-4">Компания</h4>
+            <ul className="space-y-3">
+              {['О нас', 'Блог', 'Карьера', 'Контакты'].map((item) => (
+                <li key={item}>
+                  <Link href="#team" className="text-sm text-mid-grey hover:text-neon-cyan transition-colors duration-200">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Social */}
           <div>
-            <h4 className="font-bold text-primaryText mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm text-gray300">
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Privacy Policy</Link></li>
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Terms of Service</Link></li>
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Cookie Policy</Link></li>
-              <li><Link href="#" className="hover:text-accentCyan transition-colors">Security</Link></li>
-            </ul>
-          </div>
-        </motion.div>
-
-        {/* Divider */}
-        <motion.div
-          className="border-t border-gray200 pt-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray300">
-              © {currentYear} DoctorM&Ai. All rights reserved.
-            </p>
-            <div className="flex gap-4">
+            <h4 className="text-sm font-semibold text-white uppercase mb-4">Соцсети</h4>
+            <div className="flex items-center gap-3">
               {[
-                { icon: '🐙', href: '#' },
-                { icon: '🐦', href: '#' },
-                { icon: '💼', href: '#' },
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  className="text-2xl hover:text-accentCyan transition-colors"
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.95 }}
+                { Icon: Github, href: 'https://github.com/DoctorMES', label: 'GitHub' },
+                { Icon: Twitter, href: '#', label: 'Twitter' },
+                { Icon: Linkedin, href: '#', label: 'LinkedIn' },
+                { Icon: Send, href: 'https://t.me/DoctorMES', label: 'Telegram' },
+              ].map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-10 h-10 rounded-full border border-dark-border flex items-center justify-center text-mid-grey hover:border-neon-cyan hover:text-neon-cyan transition-all duration-300"
                 >
-                  {social.icon}
-                </motion.a>
+                  <Icon size={18} />
+                </a>
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
+
+        <div className="border-t border-dark-border mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-mono text-xs text-mid-grey">
+            &copy; {currentYear} DoctorM&amp;Ai. All rights reserved.
+          </p>
+          <p className="font-mono text-xs text-mid-grey">
+            Built by 8 autonomous AI agents
+          </p>
+        </div>
       </div>
     </footer>
   );

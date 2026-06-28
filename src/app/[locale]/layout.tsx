@@ -1,14 +1,17 @@
 import type { ReactNode } from "react";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
-import { Header } from "../../components/layout/Header";
+import { Navbar } from "../../components/layout/Navbar";
 import { Footer } from "../../components/layout/Footer";
-import { CustomCursor } from "../../components/ui/CustomCursor";
+import { CustomCursor } from "../../components/CustomCursor";
+import { LoadingScreen } from "../../components/LoadingScreen";
+import { NoiseOverlay } from "../../components/NoiseOverlay";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
 
 export function generateStaticParams() {
   return [{ locale: "ru" }, { locale: "en" }];
@@ -76,22 +79,24 @@ export default async function LocaleLayout({
   const base = "https://shtab-ai.ru";
 
   return (
-    <html lang={locale} className={inter.variable} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" hrefLang="ru-RU" href={`${base}/ru`} />
         <link rel="alternate" hrefLang="en-US" href={`${base}/en`} />
         <link rel="alternate" hrefLang="x-default" href={`${base}/ru`} />
-        <meta name="theme-color" content="#040A14" />
+        <meta name="theme-color" content="#0A0A0F" />
       </head>
-      <body className="min-h-screen bg-[#040A14] text-[#E6F1FF] antialiased">
+      <body className="min-h-screen bg-deep-black text-white antialiased">
         <a href="#main-content" className="skip-link">
           {locale === "en" ? "Skip to content" : "Перейти к содержимому"}
         </a>
+        <LoadingScreen />
+        <NoiseOverlay />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <NextIntlClientProvider messages={messages}>
             <CustomCursor />
-            <Header />
+            <Navbar />
             <main id="main-content">{children}</main>
             <Footer />
           </NextIntlClientProvider>

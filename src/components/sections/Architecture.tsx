@@ -7,12 +7,12 @@ export function Architecture() {
   const t = useTranslations('architecture');
 
   const components = [
-    { name: 'AI Agents', icon: '🤖', description: '8 autonomous agents' },
-    { name: 'Data Layer', icon: '📊', description: 'Real-time data processing' },
-    { name: 'API Gateway', icon: '🚪', description: 'RESTful & GraphQL APIs' },
-    { name: 'ML Pipeline', icon: '⚙️', description: 'Model training & inference' },
-    { name: 'Security', icon: '🔐', description: 'End-to-end encryption' },
-    { name: 'Storage', icon: '💾', description: 'Distributed cloud storage' },
+    { name: 'AI Agents', icon: '🤖', description: '8 автономных агентов на OpenClaw' },
+    { name: 'OpenClaw Gateway', icon: '🚪', description: 'Маршрутизация и оркестрация агентов' },
+    { name: 'PostgreSQL', icon: '🐘', description: 'Основная реляционная БД' },
+    { name: 'Docker', icon: '🐳', description: 'Контейнеризация и деплой' },
+    { name: 'Monitoring', icon: '📊', description: 'Prometheus, Grafana, алертинг' },
+    { name: 'Security', icon: '🔐', description: 'Vault, SSL, шифрование' },
   ];
 
   const containerVariants = {
@@ -60,7 +60,7 @@ export function Architecture() {
           {/* Central Hub */}
           <div className="flex justify-center mb-12">
             <motion.div
-              className="glassmorphism p-8 rounded-xl border-2 border-accentCyan"
+              className="bg-gradient-to-br from-[rgba(6,182,212,0.1)] to-[rgba(139,92,246,0.1)] border border-neon-cyan/30 rounded-2xl p-8"
               animate={{
                 boxShadow: [
                   '0 0 20px rgba(0, 229, 255, 0.3)',
@@ -71,8 +71,8 @@ export function Architecture() {
               transition={{ duration: 3, repeat: Infinity }}
             >
               <div className="text-4xl mb-2">🏗️</div>
-              <div className="text-xl font-bold text-accentCyan">LabDoctorM Core</div>
-              <div className="text-sm text-gray300">AI Agents Orchestration</div>
+              <div className="text-xl font-bold text-white">LabDoctorM Core</div>
+              <div className="text-sm text-neon-cyan">AI Agents Orchestration</div>
             </motion.div>
           </div>
 
@@ -105,7 +105,7 @@ export function Architecture() {
 
                 <div className="relative z-10">
                   <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">{component.icon}</div>
-                  <h4 className="text-lg font-bold text-primaryText mb-2 group-hover:text-accentCyan transition-colors">
+                  <h4 className="text-lg font-bold text-white mb-2 group-hover:text-neon-cyan transition-colors">
                     {component.name}
                   </h4>
                   <p className="text-gray300 text-sm">{component.description}</p>
@@ -123,17 +123,15 @@ export function Architecture() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="text-2xl font-bold text-accentCyan mb-6">Technology Integration</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['TensorFlow', 'PyTorch', 'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'AWS'].map((tech) => (
-              <motion.div
+          <h3 className="text-base font-semibold text-white">Технологический стек</h3>
+          <div className="flex flex-wrap gap-3 mt-4">
+            {['Python', 'Node.js', 'Go', 'PostgreSQL', 'Docker', 'OpenClaw', 'ONNX', 'Redis', 'Nginx', 'TypeScript', 'React', 'FastAPI'].map((tech) => (
+              <span
                 key={tech}
-                className="p-4 bg-gray100 rounded-lg text-center text-primaryText font-semibold hover:bg-accentCyan hover:text-background transition-all cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="font-mono text-sm text-mid-grey border border-dark-border px-3.5 py-1.5 rounded hover:border-neon-cyan hover:text-light-grey transition-all duration-200 cursor-default"
               >
                 {tech}
-              </motion.div>
+              </span>
             ))}
           </div>
         </motion.div>

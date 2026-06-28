@@ -11,34 +11,34 @@ interface TechCategory {
 
 const techCategories: TechCategory[] = [
   {
-    name: 'Machine Learning',
+    name: 'AI & ML',
     icon: '🧠',
-    technologies: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'XGBoost', 'LightGBM', 'ONNX'],
+    technologies: ['OpenClaw', 'ONNX Runtime', 'FAISS', 'EmbeddingGemma', 'Ollama', 'Whisper'],
   },
   {
     name: 'Backend',
     icon: '⚙️',
-    technologies: ['Python', 'FastAPI', 'Django', 'Node.js', 'Go', 'Rust'],
+    technologies: ['Python', 'FastAPI', 'Node.js', 'Go', 'TypeScript', 'Telegram Bot API'],
   },
   {
     name: 'Frontend',
     icon: '🎨',
-    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js'],
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'GSAP'],
   },
   {
     name: 'Data & Storage',
     icon: '📊',
-    technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Apache Spark', 'Hadoop'],
+    technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'FAISS', 'JSON Vault', 'WebDAV'],
   },
   {
-    name: 'DevOps & Cloud',
+    name: 'DevOps',
     icon: '☁️',
-    technologies: ['Docker', 'Kubernetes', 'AWS', 'GCP', 'Azure', 'Terraform'],
+    technologies: ['Docker', 'GitHub Actions', 'systemd', 'nginx', 'SSH', 'Bash'],
   },
   {
     name: 'Security',
     icon: '🔐',
-    technologies: ['OAuth 2.0', 'JWT', 'SSL/TLS', 'HIPAA', 'GDPR', 'Encryption'],
+    technologies: ['HashiCorp Vault', 'SSL/TLS', 'JWT', 'OAuth 2.0', 'API Keys', 'Encryption'],
   },
 ];
 
@@ -100,7 +100,7 @@ export function TechStack() {
               {/* Category Header */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="text-3xl group-hover:scale-110 transition-transform">{category.icon}</div>
-                <h3 className="text-xl font-bold text-primaryText group-hover:text-accentCyan transition-colors">
+                <h3 className="text-lg font-bold text-white group-hover:text-neon-cyan transition-colors">
                   {category.name}
                 </h3>
               </div>
@@ -108,14 +108,12 @@ export function TechStack() {
               {/* Technologies */}
               <div className="flex flex-wrap gap-2">
                 {category.technologies.map((tech, techIndex) => (
-                  <motion.span
+                  <span
                     key={techIndex}
-                    className="px-3 py-1 bg-accentCyan/10 text-accentCyan text-xs font-semibold rounded-full hover:bg-accentCyan hover:text-background transition-all cursor-pointer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="font-mono text-xs text-mid-grey border border-dark-border px-2.5 py-1 rounded group-hover:border-neon-cyan/50 group-hover:text-light-grey transition-all duration-200"
                   >
                     {tech}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
             </motion.div>
@@ -130,21 +128,17 @@ export function TechStack() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <h3 className="text-2xl font-bold text-accentCyan mb-6">Why Our Stack?</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h3 className="text-base font-semibold text-white">Почему наш стек?</h3>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mt-6">
             {[
-              { title: 'Scalability', description: 'Built to handle millions of requests per second' },
-              { title: 'Performance', description: 'Optimized for sub-100ms response times' },
-              { title: 'Reliability', description: '99.99% uptime with automatic failover' },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                className="p-4 border border-accentCyan/30 rounded-lg"
-                whileHover={{ borderColor: '#00E5FF' }}
-              >
-                <h4 className="text-lg font-bold text-primaryText mb-2">{feature.title}</h4>
-                <p className="text-gray300 text-sm">{feature.description}</p>
-              </motion.div>
+              { title: 'Масштабируемость', desc: 'От 1 до 1000 агентов без переделки архитектуры' },
+              { title: 'Производительность', desc: 'ONNX inference <50ms, холодный старт <12с' },
+              { title: 'Надёжность', desc: '24/7 мониторинг, автоперезапуск, watchdog' },
+            ].map((item) => (
+              <div key={item.title} className="flex flex-col items-center max-w-[200px]">
+                <h5 className="mt-3 text-base font-semibold text-white">{item.title}</h5>
+                <p className="mt-1 text-sm text-light-grey text-center">{item.desc}</p>
+              </div>
             ))}
           </div>
         </motion.div>

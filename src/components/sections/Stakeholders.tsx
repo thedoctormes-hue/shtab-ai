@@ -20,14 +20,14 @@ const founder: TeamMember = {
 };
 
 const agents: TeamMember[] = [
-  { id: 1, name: 'КотОлизатор', role: 'Orchestrator', emoji: '🐱', description: 'Координатор лаборатории — оркестрирует задачи между агентами' },
-  { id: 2, name: 'Мангуст', role: 'Analyst', emoji: '🐍', description: 'Аналитик — глубокий анализ данных и исследований' },
-  { id: 3, name: 'Сова', role: 'Auditor', emoji: '🦉', description: 'Аудитор — гарант качества, проверка соответствия стандартам' },
-  { id: 4, name: 'Ворон', role: 'Researcher', emoji: '🐦‍⬛', description: 'Разведчик — поиск информации и исследование новых технологий' },
-  { id: 5, name: 'Муравей', role: 'Builder', emoji: '🐜', description: 'Системный интегратор — сборка и деплой решений' },
-  { id: 6, name: 'Бестия', role: 'Operator', emoji: '🐾', description: 'Оператор — управление production-сервисами и мониторинг' },
-  { id: 7, name: 'Штрейкбрехер', role: 'Developer', emoji: '⚡', description: 'Разработчик — написание кода и разработка новых продуктов' },
-  { id: 8, name: 'Доминика', role: 'Scout', emoji: '🔭', description: 'Разведчица — сканирование горизонтов и координация' },
+  { id: 1, name: 'Котолизатор', role: 'Координатор', emoji: '🐱', description: 'Координатор лаборатории — оркестрирует задачи между агентами' },
+  { id: 2, name: 'Мангуст', role: 'Аналитик', emoji: '🐾', description: 'Аналитик — глубокий анализ данных, архитектурные ревью' },
+  { id: 3, name: 'Сова', role: 'Разработчик', emoji: '🦉', description: 'Разработчик — код, тесты, коммиты, самый активный коммиттер' },
+  { id: 4, name: 'Ворон', role: 'Патруль', emoji: '🐦‍⬛', description: 'Мониторинг и патруль — следит за здоровьем сервисов 24/7' },
+  { id: 5, name: 'Муравей', role: 'Инфраструктура', emoji: '🐜', description: 'Инфраструктура — сборка, деплой, Docker, CI/CD' },
+  { id: 6, name: 'Бестия', role: 'Снабжение', emoji: '⚡', description: 'Снабжение — управление закупками и расходными материалами' },
+  { id: 7, name: 'Штрейкбрехер', role: 'Fullstack', emoji: '🦠', description: 'Fullstack-разработчик — от бэкенда до фронтенда' },
+  { id: 8, name: 'Доминика', role: 'Стратег', emoji: '🦅', description: 'Стратег — сканирование горизонтов и координация разведки' },
 ];
 
 export function Stakeholders() {
@@ -53,7 +53,7 @@ export function Stakeholders() {
   };
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8" id="team">
+    <section className="relative py-24 px-4 sm:px-6 lg:px-8 scroll-mt-[80px]" id="team">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
