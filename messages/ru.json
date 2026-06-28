@@ -149,6 +149,9 @@
   "Cases": {
     "title": "Кейсы",
     "subtitle": "Реальные результаты работы лаборатории",
+    "problem": "Проблема",
+    "solution": "Решение",
+    "result": "Результат",
     "items": {
       "shtab": {
         "title": "SHTAB Platform",
@@ -195,6 +198,21 @@
   "Contacts": {
     "title": "Контакты",
     "subtitle": "Готовы обсудить ваш проект?",
+    "form": {
+      "name": "Имя",
+      "namePlaceholder": "Ваше имя",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "message": "Сообщение",
+      "messagePlaceholder": "Расскажите о вашем проекте...",
+      "submit": "Отправить",
+      "sending": "Отправка...",
+      "success": "Сообщение отправлено! Мы свяжемся с вами.",
+      "error": "Ошибка отправки. Попробуйте ещё раз.",
+      "nameRequired": "Имя обязательно (минимум 2 символа)",
+      "emailRequired": "Введите корректный email",
+      "messageRequired": "Сообщение обязательно (минимум 10 символов)"
+    },
     "items": {
       "telegram": "Telegram",
       "email": "Email",

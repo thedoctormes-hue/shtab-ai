@@ -3,6 +3,7 @@
 import { useI18n } from "../lib/i18n";
 import { motion } from "framer-motion";
 import { Send, Mail, Globe } from "lucide-react";
+import { ContactForm } from "./ContactForm";
 
 export function Contacts() {
   const { t } = useI18n();
@@ -79,28 +80,20 @@ export function Contacts() {
             })}
           </div>
 
-          {/* CTA */}
+          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center p-8 rounded-2xl bg-gradient-to-br from-light-accent/5 to-transparent dark:from-dark-accent/10 dark:to-transparent border border-light-border dark:border-dark-border"
+            className="w-full p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-light-accent/5 to-transparent dark:from-dark-accent/10 dark:to-transparent border border-light-border dark:border-dark-border mb-8"
           >
-            <h3 className="font-heading text-2xl font-semibold text-light-text dark:text-dark-text mb-3">
+            <h3 className="font-heading text-2xl font-semibold text-light-text dark:text-dark-text mb-2 text-center">
               {t("cta.title")}
             </h3>
-            <p className="text-light-muted dark:text-dark-muted mb-6">
+            <p className="text-light-muted dark:text-dark-muted mb-6 text-center">
               {t("cta.desc")}
             </p>
-            <a
-              href="https://t.me/DoctorMES"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-light-accent dark:bg-dark-accent text-white font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-light-accent/20 dark:shadow-dark-accent/20"
-            >
-              <Send size={18} />
-              {t("cta.button")}
-            </a>
+            <ContactForm />
           </motion.div>
         </div>
       </div>

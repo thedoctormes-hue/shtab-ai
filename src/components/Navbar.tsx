@@ -33,6 +33,7 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-light-bg/80 dark:bg-dark-bg/80 border-b border-light-border dark:border-dark-border"
+      aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -61,6 +62,8 @@ export function Navbar() {
               <button
                 onClick={() => setLangOpen(!langOpen)}
                 className="p-2 rounded-lg text-light-muted hover:text-light-accent dark:text-dark-muted dark:hover:text-dark-accent transition-colors"
+                aria-label={locale === "en" ? "Change language" : "Сменить язык"}
+                aria-expanded={langOpen}
               >
                 <Globe size={18} />
               </button>
@@ -90,6 +93,7 @@ export function Navbar() {
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg text-light-muted hover:text-light-accent dark:text-dark-muted dark:hover:text-dark-accent transition-colors"
+              aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
@@ -98,6 +102,8 @@ export function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="md:hidden p-2 rounded-lg text-light-muted hover:text-light-accent dark:text-dark-muted dark:hover:text-dark-accent transition-colors"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>

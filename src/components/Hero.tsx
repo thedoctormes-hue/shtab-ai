@@ -37,7 +37,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-dark-accent/20 dark:border-dark-accent/30 bg-dark-accent/5 dark:bg-dark-accent/10 mb-8"
           >
             <Sparkles size={14} className="text-dark-accent" />
-            <span className="text-sm font-medium text-dark-accent dark:text-dark-accent text-light-accent">
+            <span className="text-sm font-medium text-light-accent dark:text-dark-accent">
               AI Laboratory
             </span>
           </motion.div>

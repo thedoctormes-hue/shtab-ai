@@ -35,7 +35,7 @@ export function Cases() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-light-accent/50 dark:hover:border-dark-accent/50 transition-all"
+              className="p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-light-accent/50 dark:hover:border-dark-accent/50 hover:shadow-lg hover:shadow-light-accent/5 dark:hover:shadow-dark-accent/5 hover:-translate-y-1 transition-all"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-light-accent/10 dark:bg-dark-accent/10">
@@ -49,7 +49,7 @@ export function Cases() {
               <div className="space-y-4">
                 <div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-light-accent dark:text-dark-accent">
-                    Проблема
+                    {t("problem")}
                   </span>
                   <p className="text-sm text-light-muted dark:text-dark-muted mt-1">
                     {t(`items.${id}.problem`)}
@@ -57,7 +57,7 @@ export function Cases() {
                 </div>
                 <div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-light-accent dark:text-dark-accent">
-                    Решение
+                    {t("solution")}
                   </span>
                   <p className="text-sm text-light-muted dark:text-dark-muted mt-1">
                     {t(`items.${id}.solution`)}
@@ -65,7 +65,7 @@ export function Cases() {
                 </div>
                 <div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-green-500">
-                    Результат
+                    {t("result")}
                   </span>
                   <p className="text-sm text-light-muted dark:text-dark-muted mt-1">
                     {t(`items.${id}.result`)}

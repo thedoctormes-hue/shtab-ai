@@ -6,7 +6,7 @@ export function Footer() {
   const { t } = useI18n();
 
   return (
-    <footer className="py-8 border-t border-light-border dark:border-dark-border">
+    <footer role="contentinfo" className="py-8 border-t border-light-border dark:border-dark-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">

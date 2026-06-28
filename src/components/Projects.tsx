@@ -78,7 +78,7 @@ export function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group flex flex-col items-center gap-3 p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-light-accent dark:hover:border-dark-accent transition-all"
+                className="group flex flex-col items-center gap-3 p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-light-accent dark:hover:border-dark-accent hover:shadow-lg hover:shadow-light-accent/10 dark:hover:shadow-dark-accent/10 hover:-translate-y-1 transition-all"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-light-accent/10 dark:bg-dark-accent/10 group-hover:bg-light-accent/20 dark:group-hover:bg-dark-accent/20 transition-colors">
                   <Icon size={24} className="text-light-accent dark:text-dark-accent" />
@@ -111,7 +111,7 @@ export function Projects() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className="group p-5 rounded-xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-light-accent/50 dark:hover:border-dark-accent/50 transition-all"
+                  className="group p-5 rounded-xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-light-accent/50 dark:hover:border-dark-accent/50 hover:shadow-md hover:shadow-light-accent/5 dark:hover:shadow-dark-accent/5 hover:-translate-y-0.5 transition-all"
                 >
                   <div className="flex items-start justify-between">
                     <h4 className="font-medium text-light-text dark:text-dark-text group-hover:text-light-accent dark:group-hover:text-dark-accent transition-colors">
