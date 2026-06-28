@@ -11,7 +11,7 @@ export function Hero() {
   const stats = [
     { value: "8", label: t("stats.agents") },
     { value: "23", label: t("stats.projects") },
-    { value: "627", label: t("stats.tests") },
+    { value: "600+", label: t("stats.tests") },
   ];
 
   return (

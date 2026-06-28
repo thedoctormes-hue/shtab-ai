@@ -56,7 +56,8 @@
       "SNZK": "Notes and knowledge system",
       "remote-access": "Remote access",
       "cheque-bot": "Receipt and recipe bot",
-      "msk-gastro-digest-bot": "Gastro bot: diets and recipes"
+      "msk-gastro-digest-bot": "Gastro bot: diets and recipes",
+      "lab-memory": "Laboratory semantic memory"
     }
   },
   "Stakeholders": {

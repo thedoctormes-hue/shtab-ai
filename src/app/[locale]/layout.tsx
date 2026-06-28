@@ -13,12 +13,12 @@ const siteConfig = {
   ru: {
     title: "DoctorM&Ai — AI-лаборатория 24/7",
     description:
-      "Автономные AI-агенты решают реальные задачи: медицина, инфраструктура, сервисы. 8 агентов, 23 проекта, 627 тестов.",
+      "Автономные AI-агенты решают реальные задачи: медицина, инфраструктура, сервисы. 8 агентов, 23 проекта, 600+ тестов.",
   },
   en: {
     title: "DoctorM&Ai — 24/7 AI Laboratory",
     description:
-      "Autonomous AI agents solve real-world problems: medicine, infrastructure, services. 8 agents, 23 projects, 627 tests.",
+      "Autonomous AI agents solve real-world problems: medicine, infrastructure, services. 8 agents, 23 projects, 600+ tests.",
   },
 };
 

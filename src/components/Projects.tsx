@@ -41,6 +41,7 @@ const projects: Record<string, { id: string; category: string; key: string }[]> 
     { id: "artifact-pulse", category: "tools", key: "artifact-pulse" },
     { id: "lab-playwright-expert", category: "tools", key: "lab-playwright-expert" },
     { id: "mcp-tools", category: "tools", key: "mcp-tools" },
+    { id: "lab-memory", category: "tools", key: "lab-memory" },
   ],
 };
 
