@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shtab-ai.ru/sitemap.xml

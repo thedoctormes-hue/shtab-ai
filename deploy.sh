@@ -1,27 +1,23 @@
 #!/bin/bash
-# Deploy shtab-ai to /var/www/shtab-ai.ru/
 set -e
 
-echo "[shtab-ai] Starting deploy..."
 cd /root/LabDoctorM/projects/shtab-ai
 
-echo "[shtab-ai] Installing dependencies..."
-npm ci
+echo "[deploy] Installing deps..."
+npm ci --include=dev --omit=
 
-echo "[shtab-ai] Building..."
+echo "[deploy] Building..."
 npm run build
 
-echo "[shtab-ai] Deploying static files..."
-if [ -d "out" ]; then
-    mkdir -p /var/www/shtab-ai.ru/
-    cp -r out/* /var/www/shtab-ai.ru/
-elif [ -d ".next/standalone" ]; then
-    mkdir -p /var/www/shtab-ai.ru/
-    cp -r .next/standalone/* /var/www/shtab-ai.ru/
-else
-    echo "[shtab-ai] WARNING: No build output found. Manual deploy needed."
-    echo "[shtab-AI] Run 'npm start' or configure static export in next.config.ts"
-    exit 1
-fi
+echo "[deploy] Copying to /var/www/shtab-ai.ru/..."
+rm -rf /var/www/shtab-ai.ru
+mkdir -p /var/www/shtab-ai.ru
+cp -r out/* /var/www/shtab-ai.ru/
 
-echo "[shtab-ai] Deploy complete!"
+echo "[deploy] Testing nginx config..."
+/usr/sbin/nginx -t
+
+echo "[deploy] Reloading nginx..."
+systemctl reload nginx
+
+echo "[deploy] Done! https://shtab-ai.ru"
