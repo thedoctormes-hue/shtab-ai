@@ -72,3 +72,81 @@ body {
   background: rgba(0, 229, 255, 0.2);
   color: inherit;
 }
+
+/* ===== WOW-EFFECT ANIMATIONS ===== */
+
+/* Scan line for dot grid */
+@keyframes scan {
+  0% { top: -2px; }
+  100% { top: 100%; }
+}
+.animate-scan {
+  animation: scan 8s linear infinite;
+}
+
+/* Gradient shift for CTA button */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient-shift {
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Gradient border animation */
+@keyframes gradient-border {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.animate-gradient-border {
+  animation: gradient-border 2s ease-in-out infinite;
+}
+
+/* Dash flow for SVG lines */
+@keyframes dash-flow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -24; }
+}
+.animate-dash-flow {
+  animation: dash-flow 1.5s linear infinite;
+}
+
+/* Custom cursor glow (lightweight) */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.03) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: left 0.1s ease-out, top 0.1s ease-out;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Noise texture overlay via SVG filter */
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Mesh gradient for backgrounds */
+.mesh-gradient {
+  background:
+    conic-gradient(from 180deg at 50% 50%, rgba(0, 229, 255, 0.03) 0deg, transparent 60deg, transparent 180deg, rgba(167, 139, 250, 0.03) 300deg, rgba(0, 229, 255, 0.03) 360deg);
+}
