@@ -81,6 +81,8 @@ export function TechStack() {
 
         {/* Tech Categories Grid */}
         <motion.div
+          role="list"
+          aria-label="Technology stack categories"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
@@ -90,6 +92,7 @@ export function TechStack() {
           {techCategories.map((category, index) => (
             <motion.div
               key={index}
+              role="listitem"
               className="glassmorphism p-6 rounded-xl hover:border-accentCyan transition-all group"
               variants={itemVariants}
               whileHover={{

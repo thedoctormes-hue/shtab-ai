@@ -5,3 +5,68 @@ out/
 .env.*
 *.tsbuildinfo
 .DS_Store
+__pycache__/
+*.pyc
+.venv/
+dist/
+build/
+.cache/
+.tox/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.npm/
+.yarn/
+.pnp
+.pnp.js
+vendor/
+.tmp/
+temp/
+*.log
+logs/
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# === Build artifacts ===
+node_modules/
+dist/
+build/
+.next/
+out/
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.tox/
+*.egg-info/
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Logs ===
+*.log
+
+# === Temp ===
+.cache/
+.tmp/
+tmp/
+
+# === Backup artifacts ===
+.backupignore

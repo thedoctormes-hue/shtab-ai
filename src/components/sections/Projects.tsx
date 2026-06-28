@@ -98,7 +98,8 @@ export function Projects() {
             <button
               key={tab.id}
               onClick={() => handleFilter(tab.id)}
-              className={`font-mono text-xs font-medium uppercase px-4 py-2 rounded-md transition-all duration-200 ${
+              aria-pressed={activeFilter === tab.id}
+              className={`font-mono text-xs font-medium uppercase px-4 py-2 rounded-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none ${
                 activeFilter === tab.id
                   ? 'bg-neon-cyan text-deep-black'
                   : 'bg-transparent border border-dark-border text-light-grey hover:border-neon-cyan hover:text-white'
@@ -112,11 +113,14 @@ export function Projects() {
         {/* Projects Grid */}
         <div
           ref={gridRef}
+          role="list"
+          aria-label="Projects list"
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
         >
           {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
+              role="listitem"
               className="project-card group bg-dark-surface border border-dark-border rounded-xl p-6 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

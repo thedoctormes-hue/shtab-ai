@@ -53,15 +53,18 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden" id="hero">
+    <section aria-labelledby="hero-heading" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden" id="hero">
       {/* Background animations */}
-      <ParticleBackground />
-      <AnimatedGradient />
+      <div aria-hidden="true">
+        <ParticleBackground />
+        <AnimatedGradient />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-[900px] mx-auto px-[clamp(1rem,4vw,3rem)] text-center">
         <h1
           ref={headlineRef}
+          id="hero-heading"
           className="font-display text-[clamp(2rem,8vw,4.5rem)] leading-[1.05] tracking-[-0.02em] shimmer-text"
         />
 
@@ -104,14 +107,14 @@ export function Hero() {
         >
           <button
             onClick={handleExploreClick}
-            className="flex items-center gap-2 bg-neon-cyan text-deep-black font-semibold text-sm tracking-[0.02em] px-7 py-3.5 rounded-lg hover:bg-[#0891B2] hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-200"
+            className="flex items-center gap-2 bg-neon-cyan text-deep-black font-semibold text-sm tracking-[0.02em] px-7 py-3.5 rounded-lg hover:bg-[#0891B2] hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-200 focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none"
           >
             {t('cta')}
             <ArrowDown size={16} />
           </button>
           <button
             onClick={handleContactClick}
-            className="bg-transparent border border-neon-cyan text-neon-cyan font-semibold text-sm tracking-[0.02em] px-7 py-3.5 rounded-lg hover:bg-[rgba(6,182,212,0.1)] hover:shadow-[0_0_16px_rgba(6,182,212,0.15)] transition-all duration-200"
+            className="bg-transparent border border-neon-cyan text-neon-cyan font-semibold text-sm tracking-[0.02em] px-7 py-3.5 rounded-lg hover:bg-[rgba(6,182,212,0.1)] hover:shadow-[0_0_16px_rgba(6,182,212,0.15)] transition-all duration-200 focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none"
           >
             Contact Us
           </button>

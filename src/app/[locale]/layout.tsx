@@ -40,8 +40,15 @@ export async function generateMetadata({
   const base = "https://shtab-ai.ru";
 
   return {
-    title: config.title,
+    title: {
+      default: config.title,
+      template: "%s | DoctorM&Ai",
+    },
     description: config.description,
+    robots: {
+      index: true,
+      follow: true,
+    },
     alternates: {
       canonical: `${base}/${locale}`,
       languages: {

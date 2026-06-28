@@ -77,6 +77,7 @@ export function Stakeholders() {
         >
           <h3 className="text-2xl font-bold text-accentCyan mb-8 text-center">{t('founder')}</h3>
           <motion.div
+            role="listitem"
             className="max-w-md mx-auto glassmorphism p-8 rounded-xl text-center hover:border-accentCyan transition-all"
             whileHover={{
               y: -8,
@@ -99,6 +100,8 @@ export function Stakeholders() {
         >
           <h3 className="text-2xl font-bold text-accentCyan mb-8 text-center">{t('agents')}</h3>
           <motion.div
+            role="list"
+            aria-label="AI Agents"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
             variants={containerVariants}
             initial="hidden"
@@ -108,6 +111,7 @@ export function Stakeholders() {
             {agents.map((agent) => (
               <motion.div
                 key={agent.id}
+                role="listitem"
                 className="group glassmorphism p-6 rounded-xl hover:border-accentCyan transition-all cursor-pointer text-center"
                 variants={itemVariants}
                 whileHover={{

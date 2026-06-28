@@ -27,6 +27,8 @@ export function Navbar() {
   return (
     <>
       <nav
+        role="navigation"
+        aria-label="Main navigation"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-deep-black/85 backdrop-blur-[12px] border-b border-dark-border"
@@ -65,9 +67,9 @@ export function Navbar() {
               <button
                 key={key}
                 onClick={() => scrollTo(key)}
-                className="relative text-sm font-medium uppercase tracking-wide text-light-grey hover:text-white transition-colors duration-300"
+                className="relative text-sm font-medium uppercase tracking-wide text-light-grey hover:text-white focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none transition-colors duration-300"
               >
-                {t(`navigation.${key}`)}
+                {t(`${key}`)}
               </button>
             ))}
           </div>
@@ -80,9 +82,10 @@ export function Navbar() {
               <Link href="/en" className="text-mid-grey hover:text-white transition-colors">EN</Link>
             </div>
             <button
-              className="md:hidden text-white"
+              className="md:hidden text-white focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -92,7 +95,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-[60] bg-deep-black flex flex-col items-center justify-center gap-8 md:hidden">
+        <div className="fixed inset-0 z-[60] bg-deep-black flex flex-col items-center justify-center gap-8 md:hidden" role="dialog" aria-modal="true">
           <button
             className="absolute top-5 right-5 text-white"
             onClick={() => setMobileOpen(false)}
@@ -104,9 +107,9 @@ export function Navbar() {
             <button
               key={key}
               onClick={() => scrollTo(key)}
-              className="text-2xl font-semibold uppercase text-white tracking-wide"
+              className="text-2xl font-semibold uppercase text-white tracking-wide focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none"
             >
-              {t(`navigation.${key}`)}
+              {t(`${key}`)}
             </button>
           ))}
         </div>

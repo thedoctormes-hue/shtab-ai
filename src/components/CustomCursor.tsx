@@ -100,11 +100,13 @@ function CustomCursor() {
     <>
       <div
         ref={dotRef}
+        aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-[10000] h-2 w-2 rounded-full bg-neon-cyan opacity-0"
         style={{ mixBlendMode: "difference" }}
       />
       <div
         ref={ringRef}
+        aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-[10000] h-8 w-8 rounded-full border-2 border-neon-cyan/50 opacity-0 transition-[width,height] duration-200"
       />
     </>

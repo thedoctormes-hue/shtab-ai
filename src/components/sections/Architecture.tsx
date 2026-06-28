@@ -51,6 +51,8 @@ export function Architecture() {
 
         {/* Architecture Diagram */}
         <motion.div
+          role="img"
+          aria-label="LabDoctorM architecture diagram showing core components: AI Agents, OpenClaw Gateway, PostgreSQL, Docker, Monitoring, and Security"
           className="relative mb-16"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

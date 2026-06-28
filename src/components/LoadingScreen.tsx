@@ -37,6 +37,9 @@ function LoadingScreen() {
 
   return (
     <div
+      role="status"
+      aria-live="polite"
+      aria-label="Загрузка приложения"
       className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-deep-black transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0"
       }`}

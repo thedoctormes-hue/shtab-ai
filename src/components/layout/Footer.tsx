@@ -7,7 +7,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-deep-black border-t border-dark-border">
+    <footer role="contentinfo" className="bg-deep-black border-t border-dark-border">
       <div className="max-w-[1200px] mx-auto px-[clamp(1rem,4vw,3rem)] py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
@@ -27,7 +27,7 @@ export function Footer() {
             <ul className="space-y-3">
               {['СнабЛаб', 'autoexpert', 'cheque-bot', 'mail-daemon'].map((item) => (
                 <li key={item}>
-                  <Link href="#projects" className="text-sm text-mid-grey hover:text-neon-cyan transition-colors duration-200">
+                  <Link href="#projects" className="text-sm text-mid-grey hover:text-neon-cyan transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none rounded">
                     {item}
                   </Link>
                 </li>
@@ -41,7 +41,7 @@ export function Footer() {
             <ul className="space-y-3">
               {['О нас', 'Блог', 'Карьера', 'Контакты'].map((item) => (
                 <li key={item}>
-                  <Link href="#team" className="text-sm text-mid-grey hover:text-neon-cyan transition-colors duration-200">
+                  <Link href="#team" className="text-sm text-mid-grey hover:text-neon-cyan transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none rounded">
                     {item}
                   </Link>
                 </li>
@@ -65,7 +65,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full border border-dark-border flex items-center justify-center text-mid-grey hover:border-neon-cyan hover:text-neon-cyan transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-dark-border flex items-center justify-center text-mid-grey hover:border-neon-cyan hover:text-neon-cyan transition-all duration-300 focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none"
                 >
                   <Icon size={18} />
                 </a>

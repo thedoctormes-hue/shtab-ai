@@ -19,11 +19,12 @@ jobs:
 
       - run: npm run build
 
-      - name: Deploy via SSH
-        uses: easingthemes/ssh-deploy@v4
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST }}
-          REMOTE_USER: ${{ secrets.USER }}
-          SOURCE: "out/"
-          TARGET: "/var/www/shtab-ai.ru/"
+      - name: Deploy via rsync
+        uses: burnett01/rsync-deployments@6.0
+        with:
+          switches: -avz --delete
+          path: out/
+          remote_path: /var/www/shtab-ai.ru/
+          remote_host: ${{ secrets.HOST }}
+          remote_user: ${{ secrets.USER }}
+          remote_key: ${{ secrets.SSH_KEY }}
