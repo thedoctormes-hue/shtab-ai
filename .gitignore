@@ -70,3 +70,4 @@ tmp/
 
 # === Backup artifacts ===
 .backupignore
+_temp/
