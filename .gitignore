@@ -71,3 +71,8 @@ tmp/
 # === Backup artifacts ===
 .backupignore
 _temp/
+
+# Secrets
+*.key
+*.pem
+*.p12
