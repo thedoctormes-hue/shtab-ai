@@ -99,7 +99,7 @@ if [ -n "$large_files" ]; then
 fi
 
 # 3. Check for suspicious patterns in staged files
-suspicious=$(git diff --cached --name-only 2>/dev/null | grep -iE '(\ .env$|\.env\.|credentials\.|\.key$|\.pem$|\.p12$)' || true)
+suspicious=$(git diff --cached --name-only 2>/dev/null | grep -iE '(\.env$|\.env\.|credentials\.|\.key$|\.pem$|\.p12$)' || true)
 if [ -n "$suspicious" ]; then
   echo "❌ BLOCKED: Sensitive files detected:"
   echo "$suspicious"
