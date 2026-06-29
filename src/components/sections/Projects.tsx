@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { useState, useRef, useCallback } from 'react';
+import { useState } from 'react';
 
 interface Project {
   id: number;
@@ -36,49 +36,39 @@ const projects: Project[] = [
   { id: 12, title: 'myrmex-control', description: 'Дашборд мониторинга лаборатории', category: 'infrastructure', filterCategory: 'Инфраструктура', icon: '📊' },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: 'easeOut' },
+  },
+};
+
 export function Projects() {
   const t = useTranslations('projects');
   const [activeFilter, setActiveFilter] = useState('All');
-  const gridRef = useRef<HTMLDivElement>(null);
-  const isAnimating = useRef(false);
 
   const filteredProjects = activeFilter === 'All'
     ? projects
     : projects.filter((p) => p.filterCategory === activeFilter);
 
-  const handleFilter = useCallback((filterId: string) => {
-    if (filterId === activeFilter || isAnimating.current) return;
-    isAnimating.current = true;
-
-    const grid = gridRef.current;
-    if (!grid) return;
-
-    const cards = grid.querySelectorAll<HTMLElement>('.project-card');
-
-    cards.forEach((card) => {
-      card.style.transition = 'opacity 0.25s ease-in, transform 0.25s ease-in, scale 0.25s ease-in';
-      card.style.opacity = '0';
-      card.style.transform = 'scale(0.95)';
-    });
-
-    setTimeout(() => {
-      setActiveFilter(filterId);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const newCards = grid.querySelectorAll<HTMLElement>('.project-card');
-          newCards.forEach((card, i) => {
-            card.style.transition = `opacity 0.3s ease-out ${i * 0.05}s, transform 0.3s ease-out ${i * 0.05}s`;
-            card.style.opacity = '1';
-            card.style.transform = 'scale(1)';
-          });
-          setTimeout(() => { isAnimating.current = false; }, 500);
-        });
-      });
-    }, 250);
-  }, [activeFilter]);
-
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 scroll-mt-[80px]" id="projects">
+    <section className="relative py-24 px-4 sm:px-6 lg:px-8 scroll-mt-[80px]" id="projects" aria-labelledby="projects-heading">
+      {/* Section Divider */}
+      <div className="section-divider mb-24" aria-hidden="true" />
+
       <div className="max-w-[1200px] mx-auto">
         {/* Section Header */}
         <motion.div
@@ -88,59 +78,109 @@ export function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">{t('title')}</h2>
+          <span className="font-mono text-xs font-medium uppercase tracking-widest text-violet-400 mb-4 block">
+            ПОРТФОЛИО
+          </span>
+          <h2 id="projects-heading" className="text-4xl sm:text-5xl font-bold mb-4">
+            <span className="gradient-text">{t('title')}</span>
+          </h2>
           <p className="text-lg text-light-grey max-w-2xl mx-auto">{t('subtitle')}</p>
         </motion.div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-2 mt-8">
-          {filterTabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => handleFilter(tab.id)}
-              aria-pressed={activeFilter === tab.id}
-              className={`font-mono text-xs font-medium uppercase px-4 py-2 rounded-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none ${
-                activeFilter === tab.id
-                  ? 'bg-neon-cyan text-deep-black'
-                  : 'bg-transparent border border-dark-border text-light-grey hover:border-neon-cyan hover:text-white'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        {/* Filter Tabs — Glass Pills */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          role="tablist"
+          aria-label="Filter projects by category"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          {filterTabs.map((tab) => {
+            const isActive = activeFilter === tab.id;
+            return (
+              <button
+                key={tab.id}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls="projects-grid"
+                onClick={() => setActiveFilter(tab.id)}
+                className={`
+                  font-mono text-xs font-medium uppercase px-5 py-2.5 rounded-full transition-all duration-300
+                  focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:outline-none
+                  ${isActive
+                    ? 'bg-gradient-to-r from-violet-500 to-violet-600 text-white shadow-lg shadow-violet-500/25'
+                    : 'bg-transparent border border-white/10 text-light-grey hover:border-violet-400/40 hover:text-white'
+                  }
+                `}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </motion.div>
 
         {/* Projects Grid */}
-        <div
-          ref={gridRef}
+        <motion.div
+          id="projects-grid"
           role="list"
           aria-label="Projects list"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          key={activeFilter}
         >
           {filteredProjects.map((project) => (
-            <motion.div
+            <motion.article
               key={project.id}
               role="listitem"
-              className="project-card group bg-dark-surface border border-dark-border rounded-xl p-6 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              aria-label={project.title}
+              className="group glass p-6 rounded-2xl relative overflow-hidden cursor-pointer border border-white/5 hover:border-violet-500/30 transition-colors duration-300"
+              variants={itemVariants}
+              whileHover={{
+                y: -8,
+                boxShadow: '0 0 40px rgba(124, 58, 237, 0.15), 0 0 80px rgba(124, 58, 237, 0.05)',
+              }}
+              transition={{ duration: 0.3 }}
             >
-              <span className="text-3xl">{project.icon}</span>
-              <h3 className="mt-4 text-xl font-semibold text-white">{project.title}</h3>
-              <p className="mt-2 text-sm text-light-grey leading-relaxed">{project.description}</p>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="font-mono text-[0.7rem] font-medium uppercase text-neon-cyan border border-neon-cyan/30 px-2.5 py-1 rounded">
-                  {project.filterCategory}
+              {/* Background glow on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
+
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-500 to-violet-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
+
+              <div className="relative z-10">
+                {/* Icon */}
+                <span className="text-4xl block mb-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                  {project.icon}
                 </span>
-                <span className="text-neon-cyan font-semibold text-base group-hover:translate-x-1 transition-transform duration-300">
-                  →
-                </span>
+
+                {/* Title */}
+                <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="mt-2 text-sm text-light-grey leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Footer: Tag + Arrow */}
+                <div className="mt-5 flex items-center justify-between">
+                  <span className="font-mono text-[0.7rem] font-medium uppercase text-violet-400 border border-violet-500/20 px-2.5 py-1 rounded-full">
+                    {project.filterCategory}
+                  </span>
+                  <span className="text-violet-400 font-semibold text-base opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" aria-hidden="true">
+                    →
+                  </span>
+                </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

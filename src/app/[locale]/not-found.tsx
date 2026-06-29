@@ -19,51 +19,53 @@ export default function NotFound() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* 404 Shimmer */}
-          <motion.h1
-            className="font-display text-[180px] sm:text-[240px] font-bold leading-none mb-6 shimmer-text select-none"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-          >
-            404
-          </motion.h1>
-
-          {/* Divider */}
-          <div className="section-divider max-w-xs mx-auto mb-8" />
-
-          {/* Heading */}
-          <h2 className="font-display text-2xl sm:text-3xl font-semibold text-white mb-3">
-            {t("heading")}
-          </h2>
-
-          {/* Description */}
-          <p className="text-gray300 mb-10 max-w-md mx-auto text-base">
-            {t("description")}
-          </p>
-
-          {/* Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-neon-cyan text-deep-black font-semibold hover:bg-neon-cyan/90 transition-all shadow-lg shadow-neon-cyan/25 hover:shadow-neon-cyan/40 hover:scale-105 active:scale-100"
+          {/* 404 Glass Card */}
+          <div className="glass max-w-lg mx-auto px-8 py-12 sm:px-12 sm:py-16">
+            <motion.h1
+              className="gradient-text font-display text-[180px] sm:text-[240px] font-bold leading-none mb-6 select-none"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
             >
-              <Home size={18} />
-              {t("homeBtn")}
-            </Link>
-            <button
-              onClick={() => window.history.back()}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-dark-border text-gray300 font-semibold hover:border-neon-cyan hover:text-neon-cyan transition-all hover:scale-105 active:scale-100"
+              404
+            </motion.h1>
+
+            {/* Divider */}
+            <div className="section-divider max-w-xs mx-auto mb-8" />
+
+            {/* Heading */}
+            <h2 className="font-display text-2xl sm:text-3xl font-semibold text-white mb-3">
+              {t("heading")}
+            </h2>
+
+            {/* Description */}
+            <p className="text-gray300 mb-10 max-w-md mx-auto text-base">
+              {t("description")}
+            </p>
+
+            {/* Buttons */}
+            <motion.div
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <ArrowLeft size={18} />
-              {t("backBtn")}
-            </button>
-          </motion.div>
+              <Link
+                href="/"
+                className="magnetic-btn inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-neon-cyan text-deep-black font-semibold transition-all shadow-lg shadow-neon-cyan/25 hover:shadow-neon-cyan/40 hover:scale-105 active:scale-100"
+              >
+                <Home size={18} />
+                {t("homeBtn")}
+              </Link>
+              <button
+                onClick={() => window.history.back()}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-dark-border text-gray300 font-semibold hover:border-neon-cyan hover:text-neon-cyan transition-all hover:scale-105 active:scale-100"
+              >
+                <ArrowLeft size={18} />
+                {t("backBtn")}
+              </button>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </div>

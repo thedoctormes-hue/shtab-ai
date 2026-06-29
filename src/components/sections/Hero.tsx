@@ -1,133 +1,204 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useRef } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { AnimatedGradient } from '../animations/AnimatedGradient';
-import { ParticleBackground } from '../animations/ParticleBackground';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Sparkles } from 'lucide-react';
 
+/* ─── Variants ─── */
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
+const floatSphere = (delay: number) => ({
+  animate: {
+    y: [0, -30, 0],
+    x: [0, 15, 0],
+    scale: [1, 1.05, 1],
+  },
+  transition: {
+    duration: 8 + delay * 2,
+    repeat: Infinity,
+    ease: 'easeInOut' as const,
+    delay,
+  },
+});
+
+/* ─── Stat counter (inline) ─── */
+function StatItem({
+  value,
+  suffix,
+  label,
+}: {
+  value: number;
+  suffix?: string;
+  label: string;
+}) {
+  return (
+    <motion.div
+      className="glass px-6 py-5 flex flex-col items-center min-w-[120px]"
+      variants={itemVariants}
+      whileHover={{ scale: 1.05, borderColor: 'rgba(124, 58, 237, 0.4)' }}
+    >
+      <span className="text-3xl md:text-4xl font-bold gradient-text font-display">
+        {value}
+        {suffix}
+      </span>
+      <span className="mt-1 text-xs font-mono uppercase tracking-wider text-mid-grey">
+        {label}
+      </span>
+    </motion.div>
+  );
+}
+
+/* ─── Main Hero ─── */
 export function Hero() {
   const t = useTranslations('hero');
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const [titleText, setTitleText] = useState(t('title'));
+  const locale = useLocale();
+  const sectionRef = useRef<HTMLElement>(null);
 
-  // Stagger animation for headline characters
-  useEffect(() => {
-    const el = headlineRef.current;
-    if (!el) return;
-    const text = titleText;
-    el.innerHTML = '';
-    const chars = text.split('').map((char, i) => {
-      const span = document.createElement('span');
-      span.textContent = char === ' ' ? '\u00A0' : char;
-      span.style.display = 'inline-block';
-      span.style.opacity = '0';
-      span.style.transform = 'translateY(30px)';
-      el.appendChild(span);
-      return span;
-    });
-
-    const timer = setTimeout(() => {
-      chars.forEach((span, i) => {
-        requestAnimationFrame(() => {
-          span.style.transition = 'opacity 0.04s ease-out, transform 0.04s ease-out';
-          span.style.transitionDelay = `${i * 0.03}s`;
-          span.style.opacity = '1';
-          span.style.transform = 'translateY(0)';
-        });
-      });
-    }, 200);
-
-    return () => clearTimeout(timer);
-  }, [titleText]);
-
-  const handleExploreClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handleContactClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section aria-labelledby="hero-heading" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden" id="hero">
-      {/* Background animations */}
-      <div aria-hidden="true">
-        <ParticleBackground />
-        <AnimatedGradient />
-      </div>
+    <section
+      ref={sectionRef}
+      id="hero"
+      aria-labelledby="hero-heading"
+      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
+    >
+      {/* ── Background layers ── */}
+      <div aria-hidden="true" className="absolute inset-0 z-0">
+        {/* Grid pattern */}
+        <div className="absolute inset-0 grid-bg opacity-30" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-[900px] mx-auto px-[clamp(1rem,4vw,3rem)] text-center">
-        <h1
-          ref={headlineRef}
-          id="hero-heading"
-          className="font-display text-[clamp(2rem,8vw,4.5rem)] leading-[1.05] tracking-[-0.02em] shimmer-text"
+        {/* Blur spheres */}
+        <motion.div
+          className="absolute top-[15%] left-[10%] w-96 h-96 rounded-full bg-neon-purple/30 blur-[120px]"
+          {...floatSphere(0)}
+        />
+        <motion.div
+          className="absolute bottom-[15%] right-[10%] w-96 h-96 rounded-full bg-neon-cyan/30 blur-[120px]"
+          {...floatSphere(2)}
         />
 
+        {/* Subtle radial vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-deep-black/80" />
+      </div>
+
+      {/* ── Content ── */}
+      <motion.div
+        className="relative z-10 max-w-[900px] mx-auto px-6 text-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Status badge */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-mono uppercase tracking-wider text-light-grey">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+            </span>
+            {t('status')}
+          </span>
+        </motion.div>
+
+        {/* Headline */}
+        <motion.h1
+          id="hero-heading"
+          variants={itemVariants}
+          className="font-display text-[clamp(2.5rem,7vw,5rem)] leading-[1.08] tracking-tight text-primaryText"
+        >
+          <span>{t('titlePrefix')}{' '}</span>
+          <span className="gradient-text">{t('titleGradient')}</span>
+          <br />
+          <span>{t('titleSuffix')}</span>
+        </motion.h1>
+
+        {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6, ease: 'easeOut' }}
-          className="mt-6 text-lg text-light-grey max-w-[600px] mx-auto"
+          variants={itemVariants}
+          className="mt-6 text-lg md:text-xl text-light-grey/80 max-w-[640px] mx-auto leading-relaxed"
         >
           {t('subtitle')}
         </motion.p>
 
+        {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.5, ease: 'easeOut' }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12"
+          variants={itemVariants}
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          {[
-            { label: t('stats.agents'), value: '8' },
-            { label: t('stats.projects'), value: '23' },
-            { label: t('stats.tests'), value: '600+' },
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-[clamp(2rem,4vw,3.5rem)] font-bold text-electric-teal leading-none tracking-tight">
-                {stat.value}
-              </div>
-              <div className="mt-1 text-sm font-medium uppercase tracking-[0.05em] text-light-grey">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+          <StatItem value={8} label={t('stats.agents')} />
+          <StatItem value={23} label={t('stats.projects')} />
+          <StatItem value={600} suffix="+" label={t('stats.tests')} />
         </motion.div>
 
+        {/* CTA buttons */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.4, ease: 'easeOut' }}
-          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+          variants={itemVariants}
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <button
-            onClick={handleExploreClick}
-            className="flex items-center gap-2 bg-neon-cyan text-deep-black font-semibold text-sm tracking-[0.02em] px-7 py-3.5 rounded-lg hover:bg-[#0891B2] hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-200 focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none"
+            onClick={() => scrollTo('projects')}
+            aria-label={t('cta')}
+            className="magnetic-btn group relative inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-semibold text-sm tracking-wide shadow-glow-purple hover:shadow-[0_0_60px_rgba(124,58,237,0.4)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-neon-purple focus-visible:outline-none"
           >
+            <Sparkles size={16} className="opacity-80" />
             {t('cta')}
-            <ArrowDown size={16} />
+            <ArrowDown
+              size={16}
+              className="translate-y-0.5 group-hover:translate-y-1 transition-transform"
+            />
           </button>
+
           <button
-            onClick={handleContactClick}
-            className="bg-transparent border border-neon-cyan text-neon-cyan font-semibold text-sm tracking-[0.02em] px-7 py-3.5 rounded-lg hover:bg-[rgba(6,182,212,0.1)] hover:shadow-[0_0_16px_rgba(6,182,212,0.15)] transition-all duration-200 focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:outline-none"
+            onClick={() => scrollTo('contact')}
+            aria-label={t('ctaSecondary')}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-dark-border text-light-grey font-semibold text-sm tracking-wide hover:border-neon-purple/50 hover:text-white hover:shadow-glow-purple transition-all duration-300 focus-visible:ring-2 focus-visible:ring-neon-purple focus-visible:outline-none"
           >
-            Contact Us
+            {t('ctaSecondary')}
           </button>
         </motion.div>
-      </div>
+      </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* ── Scroll indicator ── */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 opacity-40"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        aria-hidden="true"
       >
-        <div className="w-[2px] h-8 bg-light-grey" />
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-2 opacity-50"
+        >
+          <span className="text-[10px] font-mono uppercase tracking-widest text-mid-grey">
+            {locale === 'ru' ? 'Прокрутите' : 'Scroll'}
+          </span>
+          <div className="w-5 h-8 rounded-full border-2 border-mid-grey/50 flex items-start justify-center p-1">
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              className="w-1.5 h-1.5 rounded-full bg-neon-cyan"
+            />
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

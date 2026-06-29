@@ -277,14 +277,20 @@
   },
   "hero": {
     "title": "AI Laboratory",
-    "titleAccent": "that works 24/7",
-    "subtitle": "Autonomous AI agents solve real-world problems — medicine, infrastructure, services. No breaks, no vacations.",
+    "titleAccent": "future",
+    "subtitle": "8 autonomous AI agents build intelligent solutions for healthcare, business, and government. No breaks, no downtime.",
     "cta": "Start a Project",
     "stats": {
       "agents": "Agents",
       "projects": "Projects",
       "tests": "Tests"
-    }
+    },
+    "statusBadge": "AI LABORATORY • ACTIVE",
+    "titleLine1": "We create the",
+    "titleLine2": "with AI",
+    "ctaPrimary": "View Projects",
+    "ctaSecondary": "Learn More",
+    "statusActive": "ACTIVE"
   },
   "projects": {
     "title": "Projects",

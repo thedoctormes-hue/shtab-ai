@@ -92,7 +92,7 @@ export default async function LocaleLayout({
         <link rel="alternate" hrefLang="ru-RU" href={`${base}/ru`} />
         <link rel="alternate" hrefLang="en-US" href={`${base}/en`} />
         <link rel="alternate" hrefLang="x-default" href={`${base}/ru`} />
-        <meta name="theme-color" content="#0A0A0F" />
+        <meta name="theme-color" content="#030712" />
       </head>
       <body className="min-h-screen bg-deep-black text-white antialiased">
         <a href="#main-content" className="skip-link">

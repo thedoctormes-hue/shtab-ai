@@ -46,15 +46,15 @@ function LoadingScreen() {
     >
       {/* Logo shimmer */}
       <h1 className="text-4xl font-bold tracking-tight">
-        <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-cyan bg-[length:200%_100%] bg-clip-text text-transparent animate-[shimmer_2s_linear_infinite]">
+        <span className="gradient-text bg-[length:200%_100%] animate-[shimmer_2s_linear_infinite]">
           DoctorM&amp;Ai
         </span>
       </h1>
 
-      {/* Progress bar */}
-      <div className="mt-8 h-[2px] w-48 overflow-hidden rounded-full bg-dark-border">
+      {/* Glass progress bar */}
+      <div className="glass mt-8 h-3 w-56 overflow-hidden rounded-full">
         <div
-          className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple transition-none"
+          className="h-full rounded-full bg-gradient-to-r from-[#7c3aed] to-[#06b6d4] transition-none"
           style={{ width: `${progress}%` }}
         />
       </div>

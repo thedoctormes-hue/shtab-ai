@@ -1,12 +1,16 @@
 {
   "hero": {
-    "title": "AI Laboratory That Works 24/7",
-    "subtitle": "8 autonomous AI agents building intelligent solutions for healthcare, business, and government",
+    "status": "AI LABORATORY • ACTIVE",
+    "titlePrefix": "We create the",
+    "titleGradient": "future",
+    "titleSuffix": "with AI",
+    "subtitle": "8 autonomous AI agents building intelligent solutions for healthcare, business, and government — non-stop, 24/7",
     "cta": "Explore Our Work",
+    "ctaSecondary": "Contact Us",
     "stats": {
-      "agents": "8 Agents",
-      "projects": "23 Projects",
-      "tests": "600+ Tests"
+      "agents": "AI Agents",
+      "projects": "Projects",
+      "tests": "Tests Passed"
     }
   },
   "projects": {
